@@ -1,0 +1,28 @@
+# main links
+main:
+  - title: "Setup"
+    url: /docs/setup-guide/
+  - title: "About"
+    url: /about/
+  - title: "Github"
+    url: https://github.com/teuteuguy/amazon-freertos-m5stickc-workshop
+
+docs:
+  - title: Getting Setup
+    children:
+      - title: "Setup Guide"
+        url: /docs/setup-guide/
+      - title: "Local Setup"
+        url: /docs/local-setup-guide
+
+  - title: Labs
+    children:
+      - title: "Lab 1"
+        url: /labs/lab1/
+
+  - title: Meta
+    children:
+      - title: "Contributing"
+        url: /contributing/
+      - title: "License"
+        url: /license/
