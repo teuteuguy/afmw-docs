@@ -12,8 +12,8 @@ docs:
     children:
       - title: "Setup Guide"
         url: /docs/setup-guide/
-      # - title: "Local Setup"
-      #   url: /docs/local-setup-guide
+      - title: "Local Setup"
+        url: /docs/local-setup-guide
 
   - title: Labs
     children:

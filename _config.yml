@@ -87,6 +87,9 @@ collections:
   docs:
     output: true
     permalink: /:collection/:path/
+  advanced_docs:
+    output: true
+    permalink: /:collection/:path/
   labs:
     ouptut: true
     permalink: /:collection/:path/
@@ -320,15 +323,27 @@ defaults:
       comments: false
       sidebar:
         nav: "docs"
+  # _advanced_docs
+  - scope:
+      path: ""
+      type: advanced_docs
+    values:
+      layout: single
+      read_time: false
+      author_profile: false
+      share: false
+      comments: false
+      sidebar:
+        nav: "docs"
   # _labs
   - scope:
       path: ""
       type: labs
     values:
-      layout: posts
+      layout: single
       read_time: false
       author_profile: true
       share: false
       comments: false
       sidebar:
-        nav: "labs"
+        nav: "docs"
