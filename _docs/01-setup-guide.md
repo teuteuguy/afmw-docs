@@ -8,6 +8,7 @@ excerpt: How to quickly install and setup the M5StickC Amazon FreeRTOS Labs.
 last_modified_at: '2019-11-06 09:53:43 +0800'
 toc: true
 toc_label: Contents
+next: /labs/lab1/
 ---
 
 The following Setup Guide is designed to run the different labs from an [AWS Cloud9 Development ](https://aws.amazon.com/cloud9/)environment.
@@ -49,17 +50,14 @@ Open new Terminal window
 In the Cloud9 Terminal window install prerequisites
 
 ```bash
-sudo yum install flex gperf
-```
-```bash
+sudo yum install -y flex gperf
 sudo pip install pyserial
 ```
 
 Download 64-bit version of Xtensa ESP32 toolchain:
 
 ```bash
-cd ~/
-wget https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz
+wget https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz -P ~/
 ```
 
 Create *esp* directory and unzip the tar archive there:
@@ -70,10 +68,10 @@ cd ~/esp
 tar -xvzf ../xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz
 ```
 
-Add toolchain path to *~/.bash_profile* PATH variable
+Add toolchain path to **~/.bash_profile** PATH variable
 
 ```bash
-export PATH=$HOME/esp/xtensa-esp32-elf/bin:$PATH
+echo "export PATH=\$PATH:\$HOME/esp/xtensa-esp32-elf/bin" >> ~/.bash_profile
 ```
 
 Re-evaluate ~/bash_profile
