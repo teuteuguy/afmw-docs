@@ -1,14 +1,21 @@
 ---
-title: Setup Guide
+title: "Setup Guide"
+permalink: /docs/setup-guide/
+excerpt: "How to quickly install and setup the M5StickC Amazon FreeRTOS Labs."
+last_modified_at: 2019-11-06T09:53:43+08:00
+toc: true
+toc_label: "Contents"
+---
+
+
+<!-- title: Setup Guide
 layout: single
 sidebar:
 - nav: docs
 permalink: /docs/setup-guide
 excerpt: How to quickly install and setup the M5StickC Amazon FreeRTOS Labs.
 last_modified_at: '2019-11-06 09:53:43 +0800'
-toc: true
-toc_label: Contents
----
+toc: true -->
 
 The following Setup Guide is designed to run the different labs from an [AWS Cloud9 Development ](https://aws.amazon.com/cloud9/)environment.
 
