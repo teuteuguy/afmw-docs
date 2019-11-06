@@ -1,0 +1,7 @@
+iot:
+  thing-name            : "MyThing"
+
+code:
+  make-dir              : "~/environment/workshop/amazon-freertos/vendors/espressif/boards/m5stickc/aws_demos"
+  build-dir             : "~/environment/workshop/amazon-freertos/vendors/espressif/boards/m5stickc/aws_demos/build"
+

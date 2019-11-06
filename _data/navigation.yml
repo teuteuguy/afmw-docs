@@ -16,9 +16,10 @@ docs:
         url: /docs/local-setup-guide
 
   - title: Labs
+    url: /labs/
     children:
-      - title: "Lab 1"
-        url: /labs/lab1/
+      - title: "Lab 0 - Setup the code"
+        url: /labs/00-setup-the-code/
 
   - title: Meta
     children:

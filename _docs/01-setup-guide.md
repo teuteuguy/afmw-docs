@@ -22,27 +22,27 @@ Once you have setup the environment, you will download the binary compiled firmw
 
 Log in to your AWS Account Console and search for Cloud9
 
-![Start]({{ "/assets/images/setup-guide/c9-search.png" | relative_url }})
+![Search for Cloud9]({{ "/assets/images/docs/setup-guide/c9-search.png" | relative_url }})
 
 Create New Environment
 
-![Start]({{ "/assets/images/setup-guide/c9-create-env.png" | relative_url }})
+![Create the Cloud9 env]({{ "/assets/images/docs/setup-guide/c9-create-env.png" | relative_url }})
 
 Name your environment and provide a description, then press **Next step**
 
-![Start]({{ "/assets/images/setup-guide/c9-env-name.png" | relative_url }})
+![Start]({{ "/assets/images/docs/setup-guide/c9-env-name.png" | relative_url }})
 
 - use t2.micro instance
 - set up auto-hibernate option
 - press *Next step*
 
-![Start]({{ "/assets/images/setup-guide/c9-env-settings.png" | relative_url }})
+![Configure the Cloud9 env]({{ "/assets/images/docs/setup-guide/c9-env-settings.png" | relative_url }})
 
 - review and press *Create environment*
 
 Open new Terminal window
 
-![Start]({{ "/assets/images/setup-guide/c9-new-terminal.png" | relative_url }})
+![Open Cloud9 terminal]({{ "/assets/images/docs/setup-guide/c9-new-terminal.png" | relative_url }})
 
 ## Install ESP32 Toolchain
 

@@ -8,7 +8,7 @@ header:
     - label: "<i class='fas fa-download'></i> Install now"
       url: "/docs/setup-guide/"
     - label: "<i class='fas fa-vial'></i> Labs"
-      url: "/docs/labs/"
+      url: "/labs/"
 excerpt: >
   Open source labs for the community, by the community for the M5StickC on Amazon FreeRTOS.<br />
   <small><a href="https://github.com/teuteuguy/amazon-freertos-m5stickc-workshop/releases/tag/0.0.1">Latest release v0.0.1</a></small>
