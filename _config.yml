@@ -91,7 +91,7 @@ collections:
     output: true
     permalink: /:collection/:path/
   labs:
-    ouptut: true
+    output: true
     permalink: /:collection/:path/
 
 # Social Sharing
