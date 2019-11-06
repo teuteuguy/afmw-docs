@@ -35,7 +35,7 @@ Create New Environment
 
 ![Start]({{ "/assets/images/setup-guide/c9-create-env.png" | relative_url }})
 
-- name your environment and provide a description, then press *Next step*
+Name your environment and provide a description, then press *Next step*
 
 ![Start]({{ "/assets/images/setup-guide/c9-env-name.png" | relative_url }})
 
@@ -65,22 +65,22 @@ sudo pip install pyserial
 Download 64-bit version of Xtensa ESP32 toolchain:
 
 ```bash
-cd ~/environment
+cd ~/
 wget https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz
 ```
 
 Create *esp* directory and unzip the tar archive there:
 
 ```bash
-mkdir ~/environment/esp
-cd ~/environment/esp
-tar xvfz ../xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz
+mkdir -p ~/esp
+cd ~/esp
+tar -xvzf ../xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz
 ```
 
 Add toolchain path to *~/.bash_profile* PATH variable
 
 ```bash
-PATH=$PATH:$HOME/.local/bin:$HOME/bin:$HOME/environment/esp/xtensa-esp32-elf/bin
+export PATH=$HOME/esp/xtensa-esp32-elf/bin:$PATH
 ```
 
 Re-evaluate ~/bash_profile
