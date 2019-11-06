@@ -2,7 +2,10 @@
 layout: splash
 permalink: /
 header:
-  overlay_color: "#000000"
+  # overlay_color: "#555555"
+  # overlay_color: "#000000"
+  # overlay_filter: 0.5
+  overlay_filter: rgba(255, 165, 0, 0.5)
   overlay_image: /assets/images/mm-home-page-feature.jpg
   actions:
     - label: "<i class='fas fa-download'></i> Install now"

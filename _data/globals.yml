@@ -4,4 +4,5 @@ iot:
 code:
   make-dir              : "~/environment/workshop/amazon-freertos/vendors/espressif/boards/m5stickc/aws_demos"
   build-dir             : "~/environment/workshop/amazon-freertos/vendors/espressif/boards/m5stickc/aws_demos/build"
+  lab-config-file       : "~/environment/workshop/amazon-freertos/vendors/espressif/boards/m5stickc/aws_demos/application_code/m5stickc_lab_config.h"
 
