@@ -18,7 +18,7 @@ The following guide will help you get setup on your own laptop to run the code f
 # Set Up Your Development Environment
 To communicate with your board, you need to download and install a toolchain.
 
-## Setting Up the Toolchain
+# Setting Up the Toolchain
 To set up the toolchain, follow the instructions for your host machine's operating system:
 
 **Note:** When you reach the `"Get ESP-IDF"` instructions under **Next Steps**, stop and return to the instructions on this page. If you previously followed the `"Get ESP-IDF"` instructions and installed ESP-IDF, make sure that you clear the IDF_PATH environment variable from your system before continuing.
@@ -30,12 +30,12 @@ To set up the toolchain, follow the instructions for your host machine's operati
 **Note:** Version 3.1.5 of the ESP-IDF (the version used by Amazon FreeRTOS) does not support the latest version of the ESP32 compiler. You must use the compiler that is compatible with version 3.1.5 of the ESP-IDF (see the links above). To check the version of your compiler, run "xtensa-esp32-elf-gcc --version".
 {: .notice--info}
 
-### Standard Setup of Toolchain for Windows
+## Standard Setup of Toolchain for Windows
 
-**Note:** This section is copied from the official [ESP32 documentation](https://docs.espressif.com/projects/esp-idf/en/v3.1.5/get-started-cmake/windows-setup.html).
+**Note:** This section is copied from the official [ESP32 Windows documentation](https://docs.espressif.com/projects/esp-idf/en/v3.1.5/get-started-cmake/windows-setup.html).
 {: .notice--info}
 
-#### ESP-IDF Tools Installer
+### ESP-IDF Tools Installer
 
 The easiest way to install ESP-IDF’s prerequisites is to download the ESP-IDF Tools installer from this URL:
 
@@ -47,21 +47,24 @@ By default, the installer updates the Windows `Path` environment variable so all
 
 Note that this installer is for the ESP-IDF Tools package, it doesn’t include ESP-IDF itself.
 
-#### Installing Git
+### Installing Git
 The ESP-IDF tools installer does not install Git. By default, the getting started guide assumes you will be using Git on the command line. You can download and install a command line Git for Windows (along with the “Git Bash” terminal) from [Git For Windows](https://gitforwindows.org/).
 
 If you prefer to use a different graphical Git client, then you can install one such as Github Desktop. You will need to translate the Git commands in the Getting Started guide for use with your chosen Git client.
 
-#### Using a Terminal
+### Using a Terminal
 For the remaining Getting Started steps, we’re going to use a terminal command prompt. It doesn’t matter which command prompt you use:
 
 * You can use the built-in Windows Command Prompt, under the Start menu. All Windows command line instructions in this documentation are “batch” commands for use with the Windows Command Prompt.
 * You can use the “Git Bash” terminal which is part of [Git for Windows](https://gitforwindows.org/). This uses the same “bash” command prompt syntax as is given for Mac OS or Linux. You can find it in the Start menu once installed.
 * If you have [MSYS2](https://msys2.github.io/) installed (maybe from a previous ESP-IDF version), then you can also use the MSYS terminal.
 
-### Standard Setup of Toolchain for macOS
+## Standard Setup of Toolchain for macOS
 
-#### Install Prerequisites
+**Note:** This section is copied from the official [ESP32 Mac documentation](https://docs.espressif.com/projects/esp-idf/en/v3.1.5/get-started-cmake/macos-setup.html).
+{: .notice--info}
+
+### Install Prerequisites
 ESP-IDF will use the version of Python installed by default on Mac OS.
 
 install pip:
@@ -108,7 +111,7 @@ Then you will need to install the XCode command line tools to continue. You can 
 </div>
 
 
-#### Toolchain Setup
+### Toolchain Setup
 ESP32 toolchain for macOS is available for download from Espressif website:
 
 [https://dl.espressif.com/dl/xtensa-esp32-elf-osx-1.22.0-80-g6c4433a-5.2.0.tar.gz](https://dl.espressif.com/dl/xtensa-esp32-elf-osx-1.22.0-80-g6c4433a-5.2.0.tar.gz)
@@ -142,3 +145,7 @@ Log off and log in back to make the ``.profile`` changes effective. Run the foll
 ```bash
 printenv PATH
 ```
+
+# Next Step
+
+You can go ahead with [Lab 0]({{ '/labs/00-setup-the-code/' | relative_url }})
