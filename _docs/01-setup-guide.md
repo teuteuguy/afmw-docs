@@ -3,7 +3,7 @@ title: Setup Guide
 layout: single
 sidebar:
   nav: docs
-permalink: "/docs/setup-guide/"
+permalink: "/docs/setup-guide"
 excerpt: How to quickly install and setup the M5StickC Amazon FreeRTOS Labs.
 last_modified_at: '2019-11-06 09:53:43 +0800'
 toc: true

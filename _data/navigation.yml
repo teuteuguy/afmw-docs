@@ -11,7 +11,7 @@ docs:
   - title: Getting Setup
     children:
       - title: "Setup Guide"
-        url: /docs/setup-guide/
+        url: /docs/setup-guide
       - title: "Local Setup"
         url: /docs/local-setup-guide
 
@@ -19,17 +19,17 @@ docs:
     url: /labs/
     children:
       - title: "Lab 0 - Setup the code"
-        url: /labs/00-setup-the-code/
+        url: /labs/00-setup-the-code
       - title: "Lab 1 - AWS IoT Button"
-        url: /labs/01-aws-iot-button/
+        url: /labs/01-aws-iot-button
       - title: "Lab 2 - Thing Shadow"
-        url: /labs/02-thing-shadow/
+        url: /labs/02-thing-shadow
       - title: "Lab 3 - Alexa"
-        url: /labs/03-alexa/
+        url: /labs/03-alexa
 
   - title: Meta
     children:
       - title: "Contributing"
-        url: /contributing/
+        url: /contributing
       - title: "License"
-        url: /license/
+        url: /license
