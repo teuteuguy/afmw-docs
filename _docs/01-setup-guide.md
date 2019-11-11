@@ -14,7 +14,7 @@ The following Setup Guide is designed to run the different labs from an [AWS Clo
 
 Once you have setup the environment, you will download the binary compiled firmware files, to flash onto your M5StickC from your own laptop.
 
-**ProTip:** You can also follow the [`Local Setup Guide`]({{ '/docs/local-setup-guide/' | relative_url }}) to setup the environment for local development.
+**ProTip:** You can also follow the [`Local Setup Guide`]({{ '/docs/local-setup-guide' | relative_url }}) to setup the environment for local development.
 {: .notice--info}
 
 

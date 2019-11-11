@@ -9,7 +9,7 @@ header:
   overlay_image: /assets/images/mm-home-page-feature.jpg
   actions:
     - label: "<i class='fas fa-download'></i> Install now"
-      url: "/docs/setup-guide/"
+      url: "/docs/setup-guide"
     - label: "<i class='fas fa-vial'></i> Labs"
       url: "/labs/"
 excerpt: >
