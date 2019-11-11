@@ -52,6 +52,15 @@ Click your M5StickC button: You should see the following JSON document flow on t
 }
 ```
 
+Hold your M5StickC button: You should see the following JSON document flow on the broker
+
+```json
+{
+	"serialNumber": "[YOUR DEVICE SERIAL NUMBER]",
+	"clickType": "HOLD"
+}
+```
+
 ## Done
 
 You are done with Lab 1.
@@ -62,3 +71,4 @@ You are done with Lab 1.
 
 **Challenge:**
 * Can you create an AWS IoT Rule that gets triggered on an AWS IoT Button press that sends your cell phone an SMS?
+* Can you make that rule ONLY send you an sms if you HOLD the button?
