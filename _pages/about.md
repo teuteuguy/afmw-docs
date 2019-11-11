@@ -24,4 +24,4 @@ M5Stick-C is a mini M5Stack, powered by ESP32. It is a portable, easy-to-use, op
 
 {% include gallery id="layouts_gallery" %}
 
-[Install the Theme]({{ "/docs/quick-setup-guide" | relative_url }}){: .btn .btn--success .btn--large}
+[Install now!]({{ "/docs/setup-guide" | relative_url }}){: .btn .btn--success .btn--large}
