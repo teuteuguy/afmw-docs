@@ -1,0 +1,429 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Amazon FreeRTOS on M5StickC Admin Setup'
+Parameters:
+    GroupName:
+        Type: String
+        Description: Name of your group of students
+        Default: 'WorkshopStudents'
+    NbOfStudents:
+        Type: Number
+        Default: 10
+        Description: Number of students for your workshop. (Note that you will need to increase your EC2 limits accordingly) (max 100 for now)
+        MinValue: 1
+        MaxValue: 100
+    StudentPrefix:
+        Type: String
+        Default: 'Student'
+        Description: Default student prefix for all students, example Student101, Student102 ...
+    PasswordPrefix:
+        Type: String
+        Default: 'pwd'
+        Description: Default password prefix for all students, example YOURPREFIXStudent101, YOURPREFIXStudent102 etc ...
+
+Resources:
+
+    # Students Group
+    IAMGroupForStudents:
+        Type: 'AWS::IAM::Group'
+        Properties:
+            GroupName: !Ref GroupName
+            ManagedPolicyArns:
+                - 'arn:aws:iam::aws:policy/ReadOnlyAccess'
+                - 'arn:aws:iam::aws:policy/AWSIoTConfigReadOnlyAccess'
+            Path: '/'
+            Policies:
+                -
+                    PolicyName: 'customWorkshopStudentPolicy'
+                    PolicyDocument:
+                        Version: '2012-10-17'
+                        Statement:
+                            -
+                                Effect: 'Allow'
+                                Action:
+                                    - 'cloud9:ValidateEnvironmentName'
+                                    - 'cloud9:UpdateUserSettings'
+                                    - 'cloud9:GetUserSettings'
+                                    - 'iam:GetUser'
+                                    - 'iam:ListUsers'
+                                    - 'ec2:DescribeVpcs'
+                                    - 'ec2:DescribeSubnets'
+                                Resource: 
+                                    - '*'
+                            -
+                                Effect: 'Allow'
+                                Action:
+                                    - 'cloud9:CreateEnvironmentEC2'
+                                Resource: 
+                                    - '*'
+                                Condition:
+                                    'Null':
+                                        'cloud9:OwnerArn': 'true'
+                                    'StringEquals':
+                                        'cloud9:EnvironmentName': '${aws:username}'
+                                        'cloud9:InstanceType': 't2.micro'
+                                            
+                            -
+                                Effect: 'Allow'
+                                Action:
+                                    - 'cloud9:GetUserPublicKey'
+                                Resource: 
+                                    - '*'
+                                Condition:
+                                    'Null':
+                                        'cloud9:OwnerArn': 'true'
+                            -
+                                Effect: 'Allow'
+                                Action:
+                                    - 'cloud9:DescribeEnvironmentMemberships'
+                                Resource: 
+                                    - '*'
+                                Condition:
+                                    'Null':
+                                        'cloud9:OwnerArn': 'true'
+                                        'cloud9:EnvironmentId': 'true'
+                            -
+                                Effect: 'Allow'
+                                Action:
+                                    - 'iam:CreateServiceLinkedRole'
+                                Resource: 
+                                    - '*'
+                                Condition:
+                                    'StringLike':
+                                        'iam:AWSServiceName': 'cloud9.amazonaws.com'
+                            -
+                                Effect: 'Allow'
+                                Action:
+                                    - 'iot:CreateThing'
+                                Resource:
+                                    - !Join [':', ['arn:aws:iot', Ref: 'AWS::Region', Ref: 'AWS::AccountId', 'thing/${aws:username}']]
+                            -
+                                Effect: 'Allow'
+                                Action:
+                                    - 'iot:ValidateSecurityProfileBehaviors'
+                                    - 'iot:TestInvokeAuthorizer'
+                                    - 'iot:DescribeThingRegistrationTask'
+                                    - 'iot:ListV2LoggingLevels'
+                                    - 'iot:AddThingToThingGroup'
+                                    - 'iot:ListBillingGroups'
+                                    - 'iot:ListThingsInThingGroup'
+                                    - 'iot:ListPolicyVersions'
+                                    - 'iot:ListThingRegistrationTasks'
+                                    - 'iot:ListTagsForResource'
+                                    - 'iot:DescribeStream'
+                                    - 'iot:DescribeIndex'
+                                    - 'iot:CreateCertificateFromCsr'
+                                    - 'iot:ListViolationEvents'
+                                    - 'iot:ListCertificatesByCA'
+                                    - 'iot:DisableTopicRule'
+                                    - 'iot:DeletePolicyVersion'
+                                    - 'iot:RegisterCertificate'
+                                    - 'iot:CreateTopicRule'
+                                    - 'iot:GetV2LoggingOptions'
+                                    - 'iot:Receive'
+                                    - 'iot:ListThingGroupsForThing'
+                                    - 'iot:DetachPrincipalPolicy'
+                                    - 'iot:ListPolicies'
+                                    - 'iot:DescribeCACertificate'
+                                    - 'iot:ListThings'
+                                    - 'iot:ListIndices'
+                                    - 'iot:DescribeJobExecution'
+                                    - 'iot:DescribeAuditTask'
+                                    - 'iot:ReplaceTopicRule'
+                                    - 'iot:ListOutgoingCertificates'
+                                    - 'iot:DeleteCertificate'
+                                    - 'iot:AttachThingPrincipal'
+                                    - 'iot:GetRegistrationCode'
+                                    - 'iot:CreatePolicy'
+                                    - 'iot:ListTargetsForSecurityProfile'
+                                    - 'iot:DeleteThingShadow'
+                                    - 'iot:DeleteTopicRule'
+                                    - 'iot:GetThingShadow'
+                                    - 'iot:CreateKeysAndCertificate'
+                                    - 'iot:ListThingRegistrationTaskReports'
+                                    - 'iot:GetStatistics'
+                                    - 'iot:Publish'
+                                    - 'iot:DescribeScheduledAudit'
+                                    - 'iot:GetPolicy'
+                                    - 'iot:AttachPrincipalPolicy'
+                                    - 'iot:AttachPolicy'
+                                    - 'iot:DescribeThingGroup'
+                                    - 'iot:ListThingTypes'
+                                    - 'iot:ListStreams'
+                                    - 'iot:ListThingPrincipals'
+                                    - 'iot:UpdateThing'
+                                    - 'iot:ListOTAUpdates'
+                                    - 'iot:DetachPolicy'
+                                    - 'iot:ListJobExecutionsForJob'
+                                    - 'iot:SetDefaultPolicyVersion'
+                                    - 'iot:DescribeEndpoint'
+                                    - 'iot:GetJobDocument'
+                                    - 'iot:Subscribe'
+                                    - 'iot:ListScheduledAudits'
+                                    - 'iot:DescribeSecurityProfile'
+                                    - 'iot:GetOTAUpdate'
+                                    - 'iot:GetPolicyVersion'
+                                    - 'iot:GetTopicRule'
+                                    - 'iot:CreatePolicyVersion'
+                                    - 'iot:GetIndexingConfiguration'
+                                    - 'iot:ListAuditFindings'
+                                    - 'iot:SearchIndex'
+                                    - 'iot:GetPendingJobExecutions'
+                                    - 'iot:ListPrincipalThings'
+                                    - 'iot:EnableTopicRule'
+                                    - 'iot:DescribeDefaultAuthorizer'
+                                    - 'iot:DescribeEventConfigurations'
+                                    - 'iot:DescribeAuthorizer'
+                                    - 'iot:ListRoleAliases'
+                                    - 'iot:RegisterThing'
+                                    - 'iot:DeleteThing'
+                                    - 'iot:DescribeAccountAuditConfiguration'
+                                    - 'iot:DescribeBillingGroup'
+                                    - 'iot:Connect'
+                                    - 'iot:DescribeCertificate'
+                                    - 'iot:ListCACertificates'
+                                    - 'iot:ListJobExecutionsForThing'
+                                    - 'iot:ListThingGroups'
+                                    - 'iot:ListSecurityProfilesForTarget'
+                                    - 'iot:DescribeRoleAlias'
+                                    - 'iot:ListPrincipalPolicies'
+                                    - 'iot:UpdateCertificate'
+                                    - 'iot:GetEffectivePolicies'
+                                    - 'iot:ListTopicRules'
+                                    - 'iot:DetachThingPrincipal'
+                                    - 'iot:ListAuditTasks'
+                                    - 'iot:ListSecurityProfiles'
+                                    - 'iot:DescribeThing'
+                                    - 'iot:ListPolicyPrincipals'
+                                    - 'iot:GetLoggingOptions'
+                                    - 'iot:ListAttachedPolicies'
+                                    - 'iot:UpdateThingShadow'
+                                    - 'iot:ListActiveViolations'
+                                    - 'iot:ListTargetsForPolicy'
+                                    - 'iot:DeletePolicy'
+                                    - 'iot:ListThingsInBillingGroup'
+                                    - 'iot:TestAuthorization'
+                                    - 'iot:ListJobs'
+                                    - 'iot:ListAuthorizers'
+                                    - 'iot:DescribeJob'
+                                    - 'iot:DescribeThingType'
+                                    - 'iot:ListCertificates'
+                                Resource: '*'
+
+
+    CustomLambdaHelperForCreatingUsersRole:
+        Type: 'AWS::IAM::Role'
+        Properties:
+            AssumeRolePolicyDocument:
+                Version: '2012-10-17'
+                Statement:
+                    - Effect: 'Allow'
+                      Principal:
+                          Service:
+                              - 'lambda.amazonaws.com'
+                      Action:
+                          - 'sts:AssumeRole'
+            Path: '/'
+
+    CustomLambdaHelperForCreatingUsersRolePolicy:
+        Type: 'AWS::IAM::ManagedPolicy'
+        Properties:
+            Description: 'Custom resource for workshop policy.'
+            Roles:
+                - !Ref 'CustomLambdaHelperForCreatingUsersRole'
+            PolicyDocument:
+                Version: '2012-10-17'
+                Statement:
+                    -
+                        Effect: 'Allow'
+                        Action:
+                            - 'iam:CreateUser'
+                            - 'iam:DeleteUser'
+                            - 'iam:CreateLoginProfile'
+                            - 'iam:DeleteLoginProfile'
+                            - 'iam:AddUserToGroup'
+                            - 'iam:RemoveUserFromGroup'
+                        Resource:
+                            - '*'
+                    - 
+                        Effect: 'Allow'
+                        Action:
+                            - 'logs:CreateLogGroup'
+                        Resource: !Join ['', ['arn:aws:logs:', !Ref 'AWS::Region', ':', !Ref 'AWS::AccountId', ':*']]
+                    -
+                        Effect: 'Allow'
+                        Action:
+                            - 'logs:CreateLogStream'
+                            - 'logs:PutLogEvents'
+                        Resource:
+                            - !Join ['', ['arn:aws:logs:', !Ref 'AWS::Region', ':', !Ref 'AWS::AccountId', ':log-group:/aws/lambda/', !Ref CustomLambdaHelperForCreatingUsers, ':*']]
+
+    # Lambda for creating users
+    CustomLambdaHelperForCreatingUsers:
+        Type: 'AWS::Lambda::Function'
+        Properties:
+            # FunctionName: 'workshop-custom-resource-creation'
+            Description: 'Custom resource lambda for workshop'
+            Handler: index.handler
+            Runtime: nodejs8.10
+            Code:
+                ZipFile: |
+                    const AWS = require("aws-sdk");
+                    const IAM = new AWS.IAM();
+                    const log = console.log;
+
+                    const resp = {
+                    SUCCESS: "SUCCESS",
+                    FAILED: "FAILED",
+                    send: (evt, ctx, responseStatus, responseData, physicalResourceId) => {
+                        return new Promise((resolve, reject) => {
+                        var responseBody = JSON.stringify({
+                            Status: responseStatus,
+                            Reason:
+                            "See the details in CloudWatch Log Stream: " + ctx.logStreamName,
+                            PhysicalResourceId: physicalResourceId || ctx.logStreamName,
+                            StackId: evt.StackId,
+                            RequestId: evt.RequestId,
+                            LogicalResourceId: evt.LogicalResourceId,
+                            Data: responseData
+                        });
+
+                        log("Response body:\n", responseBody);
+
+                        var https = require("https");
+                        var url = require("url");
+
+                        var parsedUrl = url.parse(evt.ResponseURL);
+                        var options = {
+                            hostname: parsedUrl.hostname,
+                            port: 443,
+                            path: parsedUrl.path,
+                            method: "PUT",
+                            headers: {
+                            "content-type": "",
+                            "content-length": responseBody.length
+                            }
+                        };
+
+                        var request = https.request(options, function(response) {
+                            log("Status code: " + response.statusCode);
+                            log("Status message: " + response.statusMessage);
+                            resolve(ctx.done());
+                        });
+
+                        request.on("error", function(error) {
+                            log("send(..) failed executing https.request(..): " + error);
+                            reject(ctx.done(error));
+                        });
+
+                        request.write(responseBody);
+                        request.end();
+                        });
+                    }
+                    };
+
+                    exports.handler = async (evt, ctx) => {
+                    const env = process.env;
+                    log("evt:", JSON.stringify(evt));
+
+                    const students = [];
+                    let promise;
+
+                    if (evt.RequestType === "Create") {
+                        for (let i = 100; i < Number(env.NB_U) + 100; i++) {
+                        students.push(env.S_PRE + i);
+                        }
+                        promise = students.reduce((promiseChain, stu) => {
+                        return promiseChain.then(chainResults =>
+                            IAM.createUser({
+                            UserName: stu
+                            })
+                            .promise()
+                            .then(u => {
+                                log("Create", stu, u);
+                                return IAM.createLoginProfile({
+                                UserName: stu,
+                                Password: env.P_PRE + stu,
+                                PasswordResetRequired: false
+                                }).promise();
+                            })
+                            .then(l => {
+                                log("Create", stu, env.P_PRE + stu, l);
+                                return IAM.addUserToGroup({
+                                GroupName: env.GROUP,
+                                UserName: stu
+                                }).promise();
+                            })
+                            .then(g => {
+                                log("Create", stu, g);
+                                return [...chainResults, stu];
+                            })
+                        );
+                        }, Promise.resolve([]));
+                    } else if (evt.RequestType === "Delete") {
+                        promise = IAM.getGroup({
+                        GroupName: env.GROUP
+                        })
+                        .promise()
+                        .then(g => {
+                            return g.Users.reduce((promiseChain, stu) => {
+                            stu = stu.UserName;
+                            return promiseChain.then(chainResults =>
+                                IAM.deleteLoginProfile({
+                                UserName: stu
+                                })
+                                .promise()
+                                .then(l => {
+                                    log("Delete", stu, l);
+                                    return IAM.removeUserFromGroup({
+                                    GroupName: env.GROUP,
+                                    UserName: stu
+                                    }).promise();
+                                })
+                                .then(g => {
+                                    log("Delete", stu, g);
+                                    return IAM.deleteUser({
+                                    UserName: stu
+                                    }).promise();
+                                })
+                                .then(u => {
+                                    log("Delete", stu, u);
+                                    return [...chainResults, stu];
+                                })
+                            );
+                            }, Promise.resolve([]));
+                        });
+                    } else {
+                        promise = Promise.resolve("NA");
+                    }
+
+                    return await promise
+                        .then(result => {
+                        log("Result:", result);
+                        return resp.send(evt, ctx, resp.SUCCESS, { students: result });
+                        })
+                        .catch(err => {
+                        log("Error:", err);
+                        return resp.send(evt, ctx, resp.FAILED, { error: err });
+                        });
+                    };
+
+                    
+            Role: !GetAtt CustomLambdaHelperForCreatingUsersRole.Arn
+            Timeout: 600
+            MemorySize: 256
+            Environment:
+                Variables:
+                    NB_U: !Ref NbOfStudents
+                    GROUP: !Ref IAMGroupForStudents
+                    S_PRE: !Ref StudentPrefix
+                    P_PRE: !Ref PasswordPrefix
+
+    # Initialization - Copy of website assets (html/js/css/assets)
+    CreateUsers:
+        DependsOn:
+            - IAMGroupForStudents
+            - CustomLambdaHelperForCreatingUsersRolePolicy
+            - CustomLambdaHelperForCreatingUsers
+        Type: 'Custom::LoadLambda'
+        Properties:
+            ServiceToken: !GetAtt CustomLambdaHelperForCreatingUsers.Arn

@@ -12,8 +12,6 @@ docs:
     children:
       - title: "Setup Guide"
         url: /docs/setup-guide
-      - title: "Local Setup"
-        url: /docs/local-setup-guide
 
   - title: Labs
     url: /labs/
@@ -26,6 +24,13 @@ docs:
         url: /labs/02-thing-shadow
       - title: "Lab 3 - Alexa"
         url: /labs/03-alexa
+
+  - title: Advanced Setup
+    children:
+      - title: "Local Setup"
+        url: /docs/local-setup-guide
+      - title: "Facilitate your own workshop"
+        url: /docs/facilitate-workshop-guide
 
   - title: Meta
     children:
