@@ -98,3 +98,8 @@ Now that the Air Con is turned **ON**, watch how first of all, the device will *
 ## Done
 
 You are done with Lab 2.
+
+
+## Challenge
+* Can you modify the code to control the device's LED via the thing shadow?
+* Can you plug the M5StickC into your actual Air Conditioning and control it's on/off and temperature states? (if so, send us a picture!)

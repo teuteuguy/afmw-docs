@@ -2,8 +2,10 @@
 main:
   - title: "Setup"
     url: /docs/setup-guide
+  - title: "Feedback"
+    url: /feedback
   - title: "About"
-    url: /about/
+    url: /about
   - title: "Github"
     url: https://github.com/teuteuguy/amazon-freertos-m5stickc-workshop
 
@@ -38,3 +40,5 @@ docs:
         url: /contributing
       - title: "License"
         url: /license
+      - title: "Feedback"
+        url: /feedback

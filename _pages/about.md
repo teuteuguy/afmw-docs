@@ -1,6 +1,6 @@
 ---
 title: About
-permalink: "/about/"
+permalink: "/about"
 layout: single
 excerpt: Amazon FreeRTOS workshop and lab material for M5StickC.
 last_modified_at: '2019-11-06 09:53:43 +0800'
