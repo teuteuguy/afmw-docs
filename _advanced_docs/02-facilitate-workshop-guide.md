@@ -26,29 +26,29 @@ Also, the labs require having access to M5StickC devices. You can order them fro
 
 The following CloudFormation script can setup your students for you.
 
-You have to provide a `Username prefix`, a `password prefix`, a `number of users` and a `group name`.
+You have to provide a *Student name prefix*, a *Password prefix*, a *Nb of Students* and a *Group name*.
 
-For example:
-- Username prefix: Student
-- Nb of users: 3
-- Password prefix: pwd
-- Group name: Students
+For example, configuring the cloudformation deployment with the followin parameters:
+- StudentPrefix: **Student**
+- NbOfStudents: **3**
+- PasswordPrefix: **pwd**
+- GroupName: **Students**
 
-Will have the effect of creating the following 3 users and add them to the group `Students`:
+will create the following IAM Users and their respective passwords. As well as add them to the **Students** IAM group:
 
-Username | Password
------------- | -------------
-Student100 | pwdStudent100
-Student101 | pwdStudent101
-Student102 | pwdStudent102
+| Username | Password |
+| :------------ | :------------------------------------- |
+| Student100 | pwdStudent100 |
+| Student101 | pwdStudent101 |
+| Student102 | pwdStudent102 |
 
 ## Deploy the Cloudformation script
 
-Region | Launch Template
------------- | -------------
-**N. Virginia** (us-east-1) | [![Launch the Facilitator Cloudformation in us-east-1]({{ '/assets/images/deploy-to-aws.png' | relative_url }})](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=sputnik&templateURL=https://raw.githubusercontent.com/teuteuguy/afmw-docs/master/assets/cfn/facilitator-cfn.yml)
-**Oregon** (us-west-2) | [![Launch the Facilitator Cloudformation in us-west-2]({{ '/assets/images/deploy-to-aws.png' | relative_url }})](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=sputnik&templateURL=https://raw.githubusercontent.com/teuteuguy/afmw-docs/master/assets/cfn/facilitator-cfn.yml)
-**Singapore** (ap-southeast-1) | [![Launch the Facilitator Cloudformation in ap-southeast-1]({{ '/assets/images/deploy-to-aws.png' | relative_url }})](https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#/stacks/new?stackName=sputnik&templateURL=https://raw.githubusercontent.com/teuteuguy/afmw-docs/master/assets/cfn/facilitator-cfn.yml)
+| Region | Launch Template |
+| ------------ | ------------- |
+| **N. Virginia** (us-east-1) | [![Launch the Facilitator Cloudformation in us-east-1]({{ '/assets/images/deploy-to-aws.png' | relative_url }})](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=sputnik&templateURL=https://raw.githubusercontent.com/teuteuguy/afmw-docs/master/assets/cfn/facilitator-cfn.yml) |
+| **Oregon** (us-west-2) | [![Launch the Facilitator Cloudformation in us-west-2]({{ '/assets/images/deploy-to-aws.png' | relative_url }})](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=sputnik&templateURL=https://raw.githubusercontent.com/teuteuguy/afmw-docs/master/assets/cfn/facilitator-cfn.yml) |
+| **Singapore** (ap-southeast-1) | [![Launch the Facilitator Cloudformation in ap-southeast-1]({{ '/assets/images/deploy-to-aws.png' | relative_url }})](https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#/stacks/new?stackName=sputnik&templateURL=https://raw.githubusercontent.com/teuteuguy/afmw-docs/master/assets/cfn/facilitator-cfn.yml) |
 
 # What does the CFN template actually do?
 
@@ -230,6 +230,10 @@ Region | Launch Template
     Resource: '*'
 ```
 
+**Note:** The above policy is quite open for IoT related actions. The objective is to restrict access over time as the labs evolve.
+{: .notice--info}
+
+
 * Creates a custom resource CFN lambda function.
 
-The role of the lambda function is to programatically create users, add them to the group and create their login profile.
+This lambda function will then programatically create your list of IAM Student users, add them to the group and create their login profile with the default password
