@@ -53,7 +53,7 @@ Choose **Start from scratch** from the Choose a template section and click the *
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "workshop skills",
+            "invocationName": "workshop skill",
             "intents": [
                 {
                     "name": "AMAZON.FallbackIntent",
@@ -76,10 +76,17 @@ Choose **Start from scratch** from the Choose a template section and click the *
                     "samples": []
                 },
                 {
-                    "name": "ThingsAlertIntent",
+                    "name": "AirConOnIntent",
                     "slots": [],
                     "samples": [
-                        "things alert"
+                        "turn on"
+                    ]
+                },
+                {
+                    "name": "AirConOffIntent",
+                    "slots": [],
+                    "samples": [
+                        "turn off"
                     ]
                 }
             ],
