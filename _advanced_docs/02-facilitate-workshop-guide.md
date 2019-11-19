@@ -115,7 +115,7 @@ will create the following IAM Users and their respective passwords. As well as a
     Action:
         - 'iot:CreateThing'
     Resource:
-        - !Join [':', ['arn:aws:iot', Ref: 'AWS::Region', Ref: 'AWS::AccountId', 'thing/${aws:username}']]
+        - !Join [':', ['arn:aws:iot:*', Ref: 'AWS::AccountId', 'thing/${aws:username}']]
 -
     Effect: 'Allow'
     Action:

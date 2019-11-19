@@ -95,7 +95,7 @@ Resources:
                                 Action:
                                     - 'iot:CreateThing'
                                 Resource:
-                                    - !Join [':', ['arn:aws:iot', Ref: 'AWS::Region', Ref: 'AWS::AccountId', 'thing/${aws:username}']]
+                                    - !Join [':', ['arn:aws:iot:*', Ref: 'AWS::AccountId', 'thing/${aws:username}']]
                             -
                                 Effect: 'Allow'
                                 Action:
