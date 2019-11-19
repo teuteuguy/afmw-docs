@@ -56,6 +56,9 @@ Choose the recommended **One-click certificate creation**
 
 If this is the first time you create a thing in AWS IoT, you may not already have IoT policies defined. You can click **Register Thing** and we'll attach a policy later.
 
+**Note:** Make sure you activate your certificate, or else your certificate will be created, but your device will not be able to use it to connect.
+{: .notice--warning}
+
 ![IoT Core 6]({{ "/assets/images/labs/lab-0/iotcore-6.png" | relative_url }})
 
 
