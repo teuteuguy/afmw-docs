@@ -236,6 +236,7 @@ Resources:
                     -
                         Effect: 'Allow'
                         Action:
+                            - 'iam:GetGroup'
                             - 'iam:CreateUser'
                             - 'iam:DeleteUser'
                             - 'iam:CreateLoginProfile'
