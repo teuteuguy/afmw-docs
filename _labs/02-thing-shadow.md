@@ -34,7 +34,7 @@ With:
 ## Rebuild Code
 
 ```bash
-cd {{ site.data.globals['code'].build-dir }}
+cd {{ site.data.globals['code'].make-dir }}
 make all -j4
 ```
 
