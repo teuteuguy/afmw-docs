@@ -44,7 +44,7 @@ Input a Thing name of your choice and click **Next**
 
 ![IoT Core 4]({{ "/assets/images/labs/lab-0/iotcore-4.png" | relative_url }})
 
-**Note:** In the above screenshot, `device_workshop` is our thing name. For the remainder of the labs we will refer to the Thing as `{{ site.data.globals['iot'].thing-name }}`
+**Note 1:** In the above screenshot, `device_workshop` is our thing name. For the remainder of the labs we will refer to the Thing as `{{ site.data.globals['iot'].thing-name }}`
 {: .notice--warning}
 
 
@@ -56,7 +56,10 @@ Choose the recommended **One-click certificate creation**
 
 If this is the first time you create a thing in AWS IoT, you may not already have IoT policies defined. You can click **Register Thing** and we'll attach a policy later.
 
-**Note:** Make sure you activate your certificate, or else your certificate will be created, but your device will not be able to use it to connect.
+**Note 2:** Make sure you activate your certificate, or else your certificate will be created, but your device will not be able to use it to connect.
+{: .notice--warning}
+
+**Note 3:** Make sure to download the certificate and private key!
 {: .notice--warning}
 
 ![IoT Core 6]({{ "/assets/images/labs/lab-0/iotcore-6.png" | relative_url }})
@@ -76,7 +79,7 @@ We downloaded {{ site.data.globals['iot'].thing-name }}'s certificate with its p
 
 ![IoT Core 9]({{ "/assets/images/labs/lab-0/iotcore-9.png" | relative_url }})
 
-**Note:** Do not lose this zip file, it contains your thing's private key file which cannot be retrieved again.
+**Note 4:** Do not lose this zip file, it contains your thing's private key file which cannot be retrieved again.
 {: .notice--warning}
 
 **ProTip:** If you lose the files, no worries, you can always create a new certificate for the thing and attach it. Just make sure to revoke and delete the lost one.
@@ -153,7 +156,7 @@ cd ~/environment
 git clone https://github.com/teuteuguy/amazon-freertos-m5stickc-workshop.git --recurse-submodules workshop
 ```
 
-**Note:** If you chose to install the labs on your own computer, run the above commands within a terminal. Make sure you replace `~/environment` with the folder of your choice
+**Note 5:** If you chose to install the labs on your own computer, run the above commands within a terminal. Make sure you replace `~/environment` with the folder of your choice
 {: .notice--info}
 
 
@@ -196,7 +199,7 @@ Open the **aws\_clientcredential.h** file by double-clicking on it. And change/s
 {% endcapture %}
 
 <div class="notice--info">
-  <strong>Note:</strong>
+  <strong>Note 6:</strong>
   {{ notice-text | markdownify }}
 </div>
 
@@ -239,13 +242,13 @@ To flash all build output, run 'make flash' or:
 python /home/ec2-user/environment/workshop/amazon-freertos/vendors/espressif/esp-idf/components/esptool_py/esptool/esptool.py --chip esp32 --port /dev/cu.usbserial-29568143B4 --baud 1500000 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect 0x1000 /home/ec2-user/environment/workshop/amazon-freertos/vendors/espressif/boards/m5stickc/aws_demos/build/bootloader/bootloader.bin 0x20000 /home/ec2-user/environment/workshop/amazon-freertos/vendors/espressif/boards/m5stickc/aws_demos/build/aws_demo.bin 0x8000 /home/ec2-user/environment/workshop/amazon-freertos/vendors/espressif/boards/m5stickc/aws_demos/build/partition-table.bin
 ```
 
-**Note:** If you get errors at this stage, the most common mistake is that your compilation environment has not been setup properly, go back to the setup guide. Check your PATH variable with `printenv PATH` and make sure the ESP IDF has been properly set.
+**Note 7:** If you get errors at this stage, the most common mistake is that your compilation environment has not been setup properly, go back to the setup guide. Check your PATH variable with `printenv PATH` and make sure the ESP IDF has been properly set.
 {: .notice--warning}
 
 
 ### Download the binary files
 
-**Note:** If you are compiling on your laptop, you can skip this step and go to [flash directly]({{ "/labs/00-setup-the-code/#flash-the-firmware-files" | relative_url }})
+**Note 8:** If you are compiling on your laptop, you can skip this step and go to [flash directly]({{ "/labs/00-setup-the-code/#flash-the-firmware-files" | relative_url }})
 {: .notice--primary}
 
 Once compilation is done, download these 3 files to your local computer:
@@ -256,7 +259,7 @@ Once compilation is done, download these 3 files to your local computer:
 
 ![download bin files from Cloud9]({{ "/assets/images/labs/lab-0/download.png" | relative_url }})
 
-**Note:** the "build" folder is located in `{{ site.data.globals['code'].build-dir }}`
+**Note 9:** the "build" folder is located in `{{ site.data.globals['code'].build-dir }}`
 {: .notice--info}
 
 ## Flash the firmware files
@@ -277,10 +280,10 @@ You may need to install the [FTDI VCP Drivers](https://www.ftdichip.com/Drivers/
 
 ### Mac/Linux
 
-**Note:** There seems to be an issue running esptool.py with the latest version of MacOs. We are investigating how to solve this issue...
+**Note 10:** There seems to be an issue running esptool.py with the latest version of MacOs. We are investigating how to solve this issue...
 {: .notice--danger}
 
-**Note:** If you are compiling on your laptop, you can skip the below commands and simply execute `make flash`. You may need to `make menuconfig` again, and set your serial port accordingly as well as set it's boad rate to 1500000
+**Note 11:** If you are compiling on your laptop, you can skip the below commands and simply execute `make flash`. You may need to `make menuconfig` again, and set your serial port accordingly as well as set it's boad rate to 1500000
 {: .notice--primary}
 
 *  Install esptool.py:
@@ -373,7 +376,7 @@ Use ```screen``` command to see the ESP32 console:
 screen /dev/cu.usbserial-29568143B4 115200 -L
 ```
 
-**Note**: In order to exit screen press ```Ctrl + A``` and then ```K```
+**Note 12:** In order to exit screen press ```Ctrl + A``` and then ```K```
 {: .notice--info}
 
 ## Done
