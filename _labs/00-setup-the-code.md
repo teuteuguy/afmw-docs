@@ -267,23 +267,19 @@ Once compilation is done, download these 3 files to your local computer:
 For the following part of the lab, we will be connecting to the device, and as such, all commands need to be run on the computer, not the Cloud9 environment.
 
 1. Connect your M5StickC to your laptop using the provided USB cable
-2. Identify which port it is connected to
+2. Identify which port the device is connected to
 
-Check if you need to install drivers for it by checking the presence of a **/dev/cu.usbserial-29568143B4** device.
+   On Windows it will be ```COMX```, on Mac OS typically it enumerated as ```/dev/cu.usbserial-xxx``` and on Linux most likely ```/dev/ttyUSB0```
 
-**For example:** On Windows it will be ```COM3```, on Mac OS typically it enumerated as ```/dev/cu.usbserial-29568143B4``` and on Linux most likely ```/dev/ttyUSB0```
-
-You may need to install the [FTDI VCP Drivers](https://www.ftdichip.com/Drivers/VCP.htm), if you cannot find the device once connected.
-
-
-
-### Mac/Linux
-
-**Note 10:** There seems to be an issue running esptool.py with the latest version of MacOs. We are investigating how to solve this issue...
+**Note 10:** If you do not see your device, you may need to install a driver. You can dowload the [CP210x USB to UART Bridge VCP Drivers](https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers) here. Install it. Unplug your device and reconnect. You may also need to reboot your machine, after driver installation.
 {: .notice--danger}
 
-**Note 11:** If you are compiling on your laptop, you can skip the below commands and simply execute `make flash`. You may need to `make menuconfig` again, and set your serial port accordingly as well as set it's boad rate to 1500000
+<!-- You may need to install the [FTDI VCP Drivers](https://www.ftdichip.com/Drivers/VCP.htm), if you cannot find the device once connected. -->
+
+**Note 11:** If you are compiling on your laptop, you can skip the below setup and simply execute `make flash`. You should also run `make menuconfig` again, and set your serial port accordingly as well as set it's boad rate to 1500000
 {: .notice--primary}
+
+### Mac/Linux
 
 *  Install esptool.py:
 
@@ -295,7 +291,7 @@ sudo pip install esptool pyserial
 
 ```bash
 cd [THE FOLDER WHERE YOU DOWNLOADED THE 3 FILES IN PREVIOUS STEP]
-esptool.py --chip esp32 --port /dev/cu.usbserial-29568143B4 --baud 1500000 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect 0x1000 bootloader.bin 0x20000 aws_demo.bin 0x8000 partition-table.bin
+esptool.py --chip esp32 --port [YOUR /dev/usbserial-xxx] --baud 1500000 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect 0x1000 bootloader.bin 0x20000 aws_demo.bin 0x8000 partition-table.bin
 ```
 
 ### Windows
@@ -307,7 +303,7 @@ esptool.py --chip esp32 --port /dev/cu.usbserial-29568143B4 --baud 1500000 --bef
 * Open a Commnd Prompt and execute the following command (from the directory you placed the 3 downloaded files):
 
 ```bash
-esptool --chip esp32 --port COM3 --baud 1500000 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect 0x1000 bootloader.bin 0x20000 aws_demo.bin 0x8000 partition-table.bin
+esptool --chip esp32 --port [YOUR COMX] --baud 1500000 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect 0x1000 bootloader.bin 0x20000 aws_demo.bin 0x8000 partition-table.bin
 ```
 
 ## Monitor the flashing process
@@ -375,7 +371,7 @@ Use ```screen``` command to see the ESP32 console:
 screen /dev/cu.usbserial-29568143B4 115200 -L
 ```
 
-**Note 12:** In order to exit screen press ```Ctrl + A``` and then ```K```
+**Note 12:** In order to exit screen press **Ctrl + A** and then **K**
 {: .notice--info}
 
 ## Done
