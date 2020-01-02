@@ -44,7 +44,7 @@ Input a Thing name of your choice and click **Next**
 
 ![IoT Core 4]({{ "/assets/images/labs/lab-0/iotcore-4.png" | relative_url }})
 
-**Note 1:** In the above screenshot, `device_workshop` is our thing name. For the remainder of the labs we will refer to the Thing as `{{ site.data.globals['iot'].thing-name }}`
+**Note 1:** In the above screenshot, `device_workshop` is our thing name. You can choose any thing name you want. For the remainder of the labs we will refer to the Thing as `{{ site.data.globals['iot'].thing-name }}`
 {: .notice--warning}
 
 
@@ -267,7 +267,6 @@ Once compilation is done, download these 3 files to your local computer:
 For the following part of the lab, we will be connecting to the device, and as such, all commands need to be run on the computer, not the Cloud9 environment.
 
 1. Connect your M5StickC to your laptop using the provided USB cable
-
 2. Identify which port it is connected to
 
 Check if you need to install drivers for it by checking the presence of a **/dev/cu.usbserial-29568143B4** device.
