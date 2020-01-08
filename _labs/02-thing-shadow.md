@@ -92,7 +92,7 @@ Modifying the shadow desired document, should instantly result in a compiled sha
 
 Now that the Air Con is turned **ON**, watch how first of all, the device will **report** turning itself **ON** and how it's temperature will decrease to meet your set value.
 
-**Note:** Be carefull when setting the **desired.temperature** value. The lab code only supports `positive integer values`. Do not use a floating point value.
+**Note:** Be carefull when setting the **desired.temperature** value. The lab code only supports **positive integer values**. Do not use a floating point value.
 {: .notice--warning}
 
 ## Done

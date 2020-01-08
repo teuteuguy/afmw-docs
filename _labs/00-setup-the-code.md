@@ -44,7 +44,7 @@ Input a Thing name of your choice and click **Next**
 
 ![IoT Core 4]({{ "/assets/images/labs/lab-0/iotcore-4.png" | relative_url }})
 
-**Note 1:** In the above screenshot, `device_workshop` is our thing name. You can choose any thing name you want. For the remainder of the labs we will refer to the Thing as `{{ site.data.globals['iot'].thing-name }}`
+**Note 1:** In the above screenshot, **device_workshop** is our thing name. You can choose any thing name you want. For the remainder of the labs we will refer to the Thing as **{{ site.data.globals['iot'].thing-name }}**
 {: .notice--warning}
 
 
@@ -156,7 +156,7 @@ cd ~/environment
 git clone https://github.com/teuteuguy/amazon-freertos-m5stickc-workshop.git --recurse-submodules workshop
 ```
 
-**Note 5:** If you chose to install the labs on your own computer, run the above commands within a terminal. Make sure you replace `~/environment` with the folder of your choice
+**Note 5:** If you chose to install the labs on your own computer, run the above commands within a terminal. Make sure you replace **~/environment** with the folder of your choice
 {: .notice--info}
 
 
@@ -242,7 +242,7 @@ To flash all build output, run 'make flash' or:
 python /home/ec2-user/environment/workshop/amazon-freertos/vendors/espressif/esp-idf/components/esptool_py/esptool/esptool.py --chip esp32 --port /dev/cu.usbserial-29568143B4 --baud 1500000 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_freq 40m --flash_size detect 0x1000 /home/ec2-user/environment/workshop/amazon-freertos/vendors/espressif/boards/m5stickc/aws_demos/build/bootloader/bootloader.bin 0x20000 /home/ec2-user/environment/workshop/amazon-freertos/vendors/espressif/boards/m5stickc/aws_demos/build/aws_demo.bin 0x8000 /home/ec2-user/environment/workshop/amazon-freertos/vendors/espressif/boards/m5stickc/aws_demos/build/partition-table.bin
 ```
 
-**Note 7:** If you get errors at this stage, the most common mistake is that your compilation environment has not been setup properly, go back to the setup guide. Check your PATH variable with `printenv PATH` and make sure the ESP IDF has been properly set.
+**Note 7:** If you get errors at this stage, the most common mistake is that your compilation environment has not been setup properly, go back to the setup guide. Check your PATH variable with **printenv PATH** and make sure the ESP IDF has been properly set.
 {: .notice--warning}
 
 
@@ -259,7 +259,7 @@ Once compilation is done, download these 3 files to your local computer:
 
 ![download bin files from Cloud9]({{ "/assets/images/labs/lab-0/download.png" | relative_url }})
 
-**Note 9:** the "build" folder is located in `{{ site.data.globals['code'].build-dir }}`
+**Note 9:** the "build" folder is located in **{{ site.data.globals['code'].build-dir }}**
 {: .notice--info}
 
 ## Flash the firmware files
@@ -269,17 +269,20 @@ For the following part of the lab, we will be connecting to the device, and as s
 1. Connect your M5StickC to your laptop using the provided USB cable
 2. Identify which port the device is connected to
 
-   On Windows it will be ```COMX```, on Mac OS typically it enumerated as ```/dev/cu.usbserial-xxx``` and on Linux most likely ```/dev/ttyUSB0```
+   On Windows it will be **COMX**, on Mac OS typically it enumerated as **/dev/cu.usbserial-xxx** and on Linux most likely **/dev/ttyUSB0**
 
-**Note 10:** If you do not see your device, you may need to install a driver. You can dowload the [CP210x USB to UART Bridge VCP Drivers](https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers) here. Install it. Unplug your device and reconnect. You may also need to reboot your machine, after driver installation.
+**Note 10:** If you do not see your device, you may need to install a driver. You can dowload the [FTDI VCP Drivers](https://www.ftdichip.com/Drivers/VCP.htm) here. Install it. unplug your device and reconnect. You may also need to reboot your machine, after the driver installation.
 {: .notice--danger}
 
-<!-- You may need to install the [FTDI VCP Drivers](https://www.ftdichip.com/Drivers/VCP.htm), if you cannot find the device once connected. -->
+<!-- You may need to install the [CP210x USB to UART Bridge VCP Drivers](https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers), if you cannot find the device once connected. -->
 
-**Note 11:** If you are compiling on your laptop, you can skip the below setup and simply execute `make flash`. You should also run `make menuconfig` again, and set your serial port accordingly as well as set it's boad rate to 1500000
+**Note 11:** If you are compiling on your laptop, you can skip the below setup and simply execute **make flash**. You should also run **make menuconfig** again, and set your serial port accordingly as well as set it's boad rate to 1500000
 {: .notice--primary}
 
 ### Mac/Linux
+
+**Note 12:** There is currently a known problem when trying to run on Catalina. If you are running on Catalina, please use provided paperclip to connect pins **G0** to **GND** of the M5StickC when trying to flash. This should solve the problem on current design.
+{: .notice--danger}
 
 *  Install esptool.py:
 
@@ -354,7 +357,7 @@ You can download putty from [http://www.putty.org/](http://www.putty.org/) or [h
 
 ![PuTTY Wizard]({{ "/assets/images/labs/lab-0/putty-setup.png" | relative_url }})
 
-4. Setup the port and speed (Port ```COM3``` and ```115200``` in our case)
+4. Setup the port and speed (Port **COM3** and **115200** in our case)
 
 ![PuTTY setup port]({{ "/assets/images/labs/lab-0/putty-port-open.png" | relative_url }})
 
@@ -365,13 +368,13 @@ You can download putty from [http://www.putty.org/](http://www.putty.org/) or [h
 
 ### Mac/Linux
 
-Use ```screen``` command to see the ESP32 console:
+Use **screen** command to see the ESP32 console:
 
 ```bash
 screen /dev/cu.usbserial-29568143B4 115200 -L
 ```
 
-**Note 12:** In order to exit screen press **Ctrl + A** and then **K**
+**Note 13:** In order to exit screen press **Ctrl + A** and then **K**
 {: .notice--info}
 
 ## Done
