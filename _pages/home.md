@@ -8,13 +8,12 @@ header:
   overlay_filter: rgba(255, 165, 0, 0.5)
   overlay_image: /assets/images/mm-home-page-feature-lab.jpg
   actions:
-    - label: "<i class='fas fa-download'></i> Install now"
-      url: "/docs/setup-guide"
-    - label: "<i class='fas fa-vial'></i> Labs"
-      url: "/labs/"
+    - label: "<i class='fas fa-directions'></i> New workshop"
+      url: "https://teuteuguy.github.io/amazon-freertos-workshop-docs/"
+title: "Workshops have moved"
 excerpt: >
-  Open source labs for the community, by the community for the M5StickC on Amazon FreeRTOS.<br />
-  <small><a href="https://github.com/teuteuguy/amazon-freertos-m5stickc-workshop/releases/tag/0.0.1">Latest release v0.0.1</a></small>
+  This workshop is obsolete and has been moved to another repository in order to support more devices. Please use the below link to redirect to the new repository.<br />
+  <small>You can still follow the old labs and code which will not be supported anymore, by following the setup at the top.</small>
 feature_row:
   - image_path: /assets/images/mm-customizable-feature.png
     alt: "customizable"
@@ -38,5 +37,3 @@ feature_row:
     btn_class: "btn--primary"
     btn_label: "Learn more"      
 ---
-
-{% include feature_row %}
